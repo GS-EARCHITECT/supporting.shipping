@@ -1,2 +1,5 @@
-/job_consignment_master_mgmt/
-/job_consignment_details_mgmt/
+/shipping_container_master_mgmt/
+/shipping_master_mgmt/
+/storeMovementManager/
+/storeRegisterManagement/
+/main/
