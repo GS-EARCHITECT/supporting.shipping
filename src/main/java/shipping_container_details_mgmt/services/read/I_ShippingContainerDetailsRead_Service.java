@@ -11,5 +11,8 @@ public interface I_ShippingContainerDetailsRead_Service
 	public CompletableFuture<CopyOnWriteArrayList<ShippingContainerDetail_DTO>> getSelectShippingContainerDetails(CopyOnWriteArrayList<ShippingContainerDetailPK> shippingContainerDetailPKs);
 	public CompletableFuture<CopyOnWriteArrayList<ShippingContainerDetail_DTO>> getSelectShippingContainerDetailsBySchedules(CopyOnWriteArrayList<Long> ids);
 	public CompletableFuture<CopyOnWriteArrayList<ShippingContainerDetail_DTO>> getSelectShippingContainerDetailsForConsignments(CopyOnWriteArrayList<Long> cids);
-
+	public CompletableFuture<CopyOnWriteArrayList<ShippingContainerDetail_DTO>> getSelectShippingMastersPending();
+	public CompletableFuture<CopyOnWriteArrayList<ShippingContainerDetail_DTO>> getSelectShippingContainerDetailsDelivered();
+	public CompletableFuture<CopyOnWriteArrayList<ShippingContainerDetail_DTO>> getSelectShippingContainerDetailsCanBeProcessed();
+	public CompletableFuture<CopyOnWriteArrayList<ShippingContainerDetail_DTO>> getSelectShippingContainerDetailsCannotBeProcessed();
 }

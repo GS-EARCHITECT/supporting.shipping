@@ -185,5 +185,78 @@ public class ShippingMasterRead_Controller
 		return new ResponseEntity<>(shippingMasterList, HttpStatus.OK);
 	}
 
+	@GetMapping(value = "/getSelectShippingMastersComingIn", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<CopyOnWriteArrayList<ShippingMaster_DTO>> getSelectShippingMastersComingIn()
+	{
+		CompletableFuture<CopyOnWriteArrayList<ShippingMaster_DTO>> shippingMaster_DTOs = null;
+		CopyOnWriteArrayList<ShippingMaster_DTO> shippingMasterList = null;
+		try {
+			shippingMaster_DTOs = shippingMasterReadService.getSelectShippingMastersComingIn();
+			shippingMasterList = shippingMaster_DTOs.get();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>(shippingMasterList, HttpStatus.OK);
+	}
+
+	@GetMapping(value = "/getSelectShippingMastersGoingOut", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<CopyOnWriteArrayList<ShippingMaster_DTO>> getSelectShippingMastersGoingOut()
+	{
+		CompletableFuture<CopyOnWriteArrayList<ShippingMaster_DTO>> shippingMaster_DTOs = null;
+		CopyOnWriteArrayList<ShippingMaster_DTO> shippingMasterList = null;
+		try {
+			shippingMaster_DTOs = shippingMasterReadService.getSelectShippingMastersGoingOut();
+			shippingMasterList = shippingMaster_DTOs.get();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>(shippingMasterList, HttpStatus.OK);
+	}
+
+	@GetMapping(value = "/getSelectShippingMastersCanBeProcessed", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<CopyOnWriteArrayList<ShippingMaster_DTO>> getSelectShippingMastersCanBeProcessed()
+	{
+		CompletableFuture<CopyOnWriteArrayList<ShippingMaster_DTO>> shippingMaster_DTOs = null;
+		CopyOnWriteArrayList<ShippingMaster_DTO> shippingMasterList = null;
+		try {
+			shippingMaster_DTOs = shippingMasterReadService.getSelectShippingMastersCanBeProcessed();
+			shippingMasterList = shippingMaster_DTOs.get();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>(shippingMasterList, HttpStatus.OK);
+	}
+
+	@GetMapping(value = "/getSelectShippingMastersCannotBeProcessed", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<CopyOnWriteArrayList<ShippingMaster_DTO>> getSelectShippingMastersCannotBeProcessed()
+	{
+		CompletableFuture<CopyOnWriteArrayList<ShippingMaster_DTO>> shippingMaster_DTOs = null;
+		CopyOnWriteArrayList<ShippingMaster_DTO> shippingMasterList = null;
+		try {
+			shippingMaster_DTOs = shippingMasterReadService.getSelectShippingMastersCannotBeProcessed();
+			shippingMasterList = shippingMaster_DTOs.get();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>(shippingMasterList, HttpStatus.OK);
+	}
+
+	
 	
 }

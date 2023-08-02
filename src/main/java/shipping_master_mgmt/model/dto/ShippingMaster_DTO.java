@@ -1,10 +1,8 @@
 package shipping_master_mgmt.model.dto;
 
 import java.io.Serializable;
-import javax.persistence.*;
 
-public class ShippingMaster_DTO implements Serializable 
-{
+public class ShippingMaster_DTO implements Serializable {
 
 	/**
 	 * 
@@ -19,6 +17,7 @@ public class ShippingMaster_DTO implements Serializable
 	private Character okflag;
 	private String shippingId;
 	private Long topartySeqNo;
+	private String inFlag;
 
 	public long getShippingSeqNo() {
 		return shippingSeqNo;
@@ -93,7 +92,7 @@ public class ShippingMaster_DTO implements Serializable
 	}
 
 	public ShippingMaster_DTO(long shippingSeqNo, String ata, String atd, String eta, String etd, Long frompartySeqNo,
-			Character okflag, String shippingId, Long topartySeqNo) {
+			Character okflag, String shippingId, Long topartySeqNo, String inFlag) {
 		super();
 		this.shippingSeqNo = shippingSeqNo;
 		this.ata = ata;
@@ -104,6 +103,15 @@ public class ShippingMaster_DTO implements Serializable
 		this.okflag = okflag;
 		this.shippingId = shippingId;
 		this.topartySeqNo = topartySeqNo;
+		this.inFlag = inFlag;
+	}
+
+	public String getInFlag() {
+		return inFlag;
+	}
+
+	public void setInFlag(String inFlag) {
+		this.inFlag = inFlag;
 	}
 
 	public ShippingMaster_DTO() {

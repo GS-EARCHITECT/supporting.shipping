@@ -88,6 +88,67 @@ public class ShippingContainerDetailsRead_Service implements I_ShippingContainer
 		return future;
 	}
 
+	@Override
+	public CompletableFuture<CopyOnWriteArrayList<ShippingContainerDetail_DTO>> getSelectShippingMastersPending() 
+	{
+		CompletableFuture<CopyOnWriteArrayList<ShippingContainerDetail_DTO>> future = CompletableFuture
+				.supplyAsync(() -> {
+					CopyOnWriteArrayList<ShippingContainerDetail> shippingList = (CopyOnWriteArrayList<ShippingContainerDetail>) shippingContainerDetailsReadRepo
+							.getSelectShippingMastersPending();
+					CopyOnWriteArrayList<ShippingContainerDetail_DTO> jcmDTOs = new CopyOnWriteArrayList<ShippingContainerDetail_DTO>();
+					jcmDTOs = shippingList != null ? this.getShippingContainerDetail_DTOs(shippingList) : null;
+					return jcmDTOs;
+				}, asyncExecutor);
+
+		return future;
+	}
+
+	@Override
+	public CompletableFuture<CopyOnWriteArrayList<ShippingContainerDetail_DTO>> getSelectShippingContainerDetailsDelivered() 
+	{
+		CompletableFuture<CopyOnWriteArrayList<ShippingContainerDetail_DTO>> future = CompletableFuture
+				.supplyAsync(() -> {
+					CopyOnWriteArrayList<ShippingContainerDetail> shippingList = (CopyOnWriteArrayList<ShippingContainerDetail>) shippingContainerDetailsReadRepo
+							.getSelectShippingContainerDetailsDelivered();
+					CopyOnWriteArrayList<ShippingContainerDetail_DTO> jcmDTOs = new CopyOnWriteArrayList<ShippingContainerDetail_DTO>();
+					jcmDTOs = shippingList != null ? this.getShippingContainerDetail_DTOs(shippingList) : null;
+					return jcmDTOs;
+				}, asyncExecutor);
+
+		return future;
+	}
+
+	@Override
+	public CompletableFuture<CopyOnWriteArrayList<ShippingContainerDetail_DTO>> getSelectShippingContainerDetailsCanBeProcessed() 
+	{
+		CompletableFuture<CopyOnWriteArrayList<ShippingContainerDetail_DTO>> future = CompletableFuture
+				.supplyAsync(() -> {
+					CopyOnWriteArrayList<ShippingContainerDetail> shippingList = (CopyOnWriteArrayList<ShippingContainerDetail>) shippingContainerDetailsReadRepo
+							.getSelectShippingContainerDetailsCanBeProcessed();
+					CopyOnWriteArrayList<ShippingContainerDetail_DTO> jcmDTOs = new CopyOnWriteArrayList<ShippingContainerDetail_DTO>();
+					jcmDTOs = shippingList != null ? this.getShippingContainerDetail_DTOs(shippingList) : null;
+					return jcmDTOs;
+				}, asyncExecutor);
+
+		return future;
+	}
+	
+	@Override
+	public CompletableFuture<CopyOnWriteArrayList<ShippingContainerDetail_DTO>> getSelectShippingContainerDetailsCannotBeProcessed() 
+	{
+		CompletableFuture<CopyOnWriteArrayList<ShippingContainerDetail_DTO>> future = CompletableFuture
+				.supplyAsync(() -> {
+					CopyOnWriteArrayList<ShippingContainerDetail> shippingList = (CopyOnWriteArrayList<ShippingContainerDetail>) shippingContainerDetailsReadRepo
+							.getSelectShippingContainerDetailsCannotBeProcessed();
+					CopyOnWriteArrayList<ShippingContainerDetail_DTO> jcmDTOs = new CopyOnWriteArrayList<ShippingContainerDetail_DTO>();
+					jcmDTOs = shippingList != null ? this.getShippingContainerDetail_DTOs(shippingList) : null;
+					return jcmDTOs;
+				}, asyncExecutor);
+
+		return future;
+	}
+
+	
 	private synchronized CopyOnWriteArrayList<ShippingContainerDetail_DTO> getShippingContainerDetail_DTOs(
 			CopyOnWriteArrayList<ShippingContainerDetail> shippingContainerDetails) {
 		ShippingContainerDetail_DTO shippingDTO = null;

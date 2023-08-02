@@ -15,4 +15,8 @@ public interface I_ShippingMasterRead_Service
 	public CompletableFuture<CopyOnWriteArrayList<ShippingMaster_DTO>> getSelectShippingMastersDelivered();
 	public CompletableFuture<CopyOnWriteArrayList<ShippingMaster_DTO>> getSelectWorksBetweenETimes(String frDtTm, String toDtTm);
 	public CompletableFuture<CopyOnWriteArrayList<ShippingMaster_DTO>> getSelectWorksBetweenATimes(String frDtTm, String toDtTm);
+	public CompletableFuture<CopyOnWriteArrayList<ShippingMaster_DTO>> getSelectShippingMastersComingIn();
+	public CompletableFuture<CopyOnWriteArrayList<ShippingMaster_DTO>> getSelectShippingMastersGoingOut();
+	public CompletableFuture<CopyOnWriteArrayList<ShippingMaster_DTO>> getSelectShippingMastersCanBeProcessed();
+	public CompletableFuture<CopyOnWriteArrayList<ShippingMaster_DTO>> getSelectShippingMastersCannotBeProcessed();	
 }

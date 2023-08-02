@@ -130,6 +130,34 @@ public class ShippingMasterRead_Service implements I_ShippingMasterRead_Service
 	}
 	
 	@Override
+	public CompletableFuture<CopyOnWriteArrayList<ShippingMaster_DTO>> getSelectShippingMastersCanBeProcessed() 
+	{
+		CompletableFuture<CopyOnWriteArrayList<ShippingMaster_DTO>> future = CompletableFuture.supplyAsync(() -> 
+		{
+		CopyOnWriteArrayList<ShippingMaster> shippingList = (CopyOnWriteArrayList<ShippingMaster>) shippingMasterReadRepo.getSelectShippingMastersCanBeProcessed();
+		CopyOnWriteArrayList<ShippingMaster_DTO> jcmDTOs = new CopyOnWriteArrayList<ShippingMaster_DTO>();
+		jcmDTOs = shippingList != null ? this.getShippingMaster_DTOs(shippingList) : null;
+		return jcmDTOs;
+		},asyncExecutor);
+
+	return future;
+	}
+
+	@Override
+	public CompletableFuture<CopyOnWriteArrayList<ShippingMaster_DTO>> getSelectShippingMastersCannotBeProcessed() 
+	{
+		CompletableFuture<CopyOnWriteArrayList<ShippingMaster_DTO>> future = CompletableFuture.supplyAsync(() -> 
+		{
+		CopyOnWriteArrayList<ShippingMaster> shippingList = (CopyOnWriteArrayList<ShippingMaster>) shippingMasterReadRepo.getSelectShippingMastersCannotBeProcessed();
+		CopyOnWriteArrayList<ShippingMaster_DTO> jcmDTOs = new CopyOnWriteArrayList<ShippingMaster_DTO>();
+		jcmDTOs = shippingList != null ? this.getShippingMaster_DTOs(shippingList) : null;
+		return jcmDTOs;
+		},asyncExecutor);
+
+	return future;
+	}
+
+	@Override
 	public CompletableFuture<CopyOnWriteArrayList<ShippingMaster_DTO>> getSelectWorksBetweenETimes(String frDtTm, String toDtTm) 
 	{
 		CompletableFuture<CopyOnWriteArrayList<ShippingMaster_DTO>> future = CompletableFuture.supplyAsync(() -> 
@@ -166,6 +194,35 @@ public class ShippingMasterRead_Service implements I_ShippingMasterRead_Service
 
 	return future;
 	}
+	
+	@Override
+	public CompletableFuture<CopyOnWriteArrayList<ShippingMaster_DTO>> getSelectShippingMastersComingIn() 
+	{
+		CompletableFuture<CopyOnWriteArrayList<ShippingMaster_DTO>> future = CompletableFuture.supplyAsync(() -> 
+		{
+		CopyOnWriteArrayList<ShippingMaster> shippingList = (CopyOnWriteArrayList<ShippingMaster>) shippingMasterReadRepo.getSelectShippingMastersComingIn();
+		CopyOnWriteArrayList<ShippingMaster_DTO> jcmDTOs = new CopyOnWriteArrayList<ShippingMaster_DTO>();
+		jcmDTOs = shippingList != null ? this.getShippingMaster_DTOs(shippingList) : null;
+		return jcmDTOs;
+		},asyncExecutor);
+
+	return future;
+	}
+
+	@Override
+	public CompletableFuture<CopyOnWriteArrayList<ShippingMaster_DTO>> getSelectShippingMastersGoingOut() 
+	{
+		CompletableFuture<CopyOnWriteArrayList<ShippingMaster_DTO>> future = CompletableFuture.supplyAsync(() -> 
+		{
+		CopyOnWriteArrayList<ShippingMaster> shippingList = (CopyOnWriteArrayList<ShippingMaster>) shippingMasterReadRepo.getSelectShippingMastersGoingOut();
+		CopyOnWriteArrayList<ShippingMaster_DTO> jcmDTOs = new CopyOnWriteArrayList<ShippingMaster_DTO>();
+		jcmDTOs = shippingList != null ? this.getShippingMaster_DTOs(shippingList) : null;
+		return jcmDTOs;
+		},asyncExecutor);
+
+	return future;
+	}
+
 	
 	private synchronized CopyOnWriteArrayList<ShippingMaster_DTO> getShippingMaster_DTOs(CopyOnWriteArrayList<ShippingMaster> shippingMasters) {
 		ShippingMaster_DTO shippingDTO = null;

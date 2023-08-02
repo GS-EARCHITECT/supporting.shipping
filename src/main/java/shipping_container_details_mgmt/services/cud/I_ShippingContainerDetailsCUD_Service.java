@@ -9,6 +9,7 @@ public interface I_ShippingContainerDetailsCUD_Service
 {	
 	public CompletableFuture<ShippingContainerDetail_DTO> newShippingContainerDetail(ShippingContainerDetail_DTO shippingContainerDetail_DTO);
 	public CompletableFuture<Void> updShippingContainerDetail(ShippingContainerDetail_DTO shippingContainerDetail_DTO);
+	public CompletableFuture<Void> updShippingConsignmentStatus(ShippingContainerDetail_DTO shippingContainerDetail_DTO);
 	public CompletableFuture<Void> delAllShippingContainerDetails();
 	public CompletableFuture<Void> delSelectShippingContainerDetails(CopyOnWriteArrayList<ShippingContainerDetailPK> shippingContainerDetailPKs);
 	public CompletableFuture<Void> delSelectShippingContainerDetailsBySchedules(CopyOnWriteArrayList<Long> ids);

@@ -10,14 +10,24 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "SHIPPING_MASTER")
-public class ShippingMaster implements Serializable {
+public class ShippingMaster implements Serializable 
+{
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SHIPPING_SEQUENCE")
 	@SequenceGenerator(name = "SHIPPING_SEQUENCE", sequenceName = "SHIPPING_SEQUENCE", allocationSize = 1)
 	@Column(name = "SHIPPING_SEQ_NO")
-	private long shippingSeqNo;
+	private Long shippingSeqNo;
+
+	@Column(name = "DONEFLAG")
+	private Character doneFlag;
+	
+	@Column(name = "INFLAG")
+	private Character inFlag;
+	
+	@Column(name = "OKFLAG")
+	private Character okflag;
 
 	@Column(name = "ATA")
 	private Timestamp ata;
@@ -34,9 +44,6 @@ public class ShippingMaster implements Serializable {
 	@Column(name = "FROMPARTY_SEQ_NO")
 	private Long frompartySeqNo;
 
-	@Column(name = "OKFLAG")
-	private Character okflag;
-
 	@Column(name = "SHIPPING_ID")
 	private String shippingId;
 
@@ -46,11 +53,11 @@ public class ShippingMaster implements Serializable {
 	public ShippingMaster() {
 	}
 
-	public long getShippingSeqNo() {
+	public Long getShippingSeqNo() {
 		return shippingSeqNo;
 	}
 
-	public void setShippingSeqNo(long shippingSeqNo) {
+	public void setShippingSeqNo(Long shippingSeqNo) {
 		this.shippingSeqNo = shippingSeqNo;
 	}
 
@@ -118,11 +125,29 @@ public class ShippingMaster implements Serializable {
 		this.topartySeqNo = topartySeqNo;
 	}
 
+	public Character getDoneFlag() {
+		return doneFlag;
+	}
+
+	public void setDoneFlag(Character doneFlag) {
+		this.doneFlag = doneFlag;
+	}
+
+	public Character getInFlag() {
+		return inFlag;
+	}
+
+	public void setInFlag(Character inFlag) {
+		this.inFlag = inFlag;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (shippingSeqNo ^ (shippingSeqNo >>> 32));
+		result = prime * result + ((frompartySeqNo == null) ? 0 : frompartySeqNo.hashCode());
+		result = prime * result + ((shippingSeqNo == null) ? 0 : shippingSeqNo.hashCode());
+		result = prime * result + ((topartySeqNo == null) ? 0 : topartySeqNo.hashCode());
 		return result;
 	}
 
@@ -135,23 +160,40 @@ public class ShippingMaster implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		ShippingMaster other = (ShippingMaster) obj;
-		if (shippingSeqNo != other.shippingSeqNo)
+		if (frompartySeqNo == null) {
+			if (other.frompartySeqNo != null)
+				return false;
+		} else if (!frompartySeqNo.equals(other.frompartySeqNo))
+			return false;
+		if (shippingSeqNo == null) {
+			if (other.shippingSeqNo != null)
+				return false;
+		} else if (!shippingSeqNo.equals(other.shippingSeqNo))
+			return false;
+		if (topartySeqNo == null) {
+			if (other.topartySeqNo != null)
+				return false;
+		} else if (!topartySeqNo.equals(other.topartySeqNo))
 			return false;
 		return true;
 	}
 
-	public ShippingMaster(long shippingSeqNo, Timestamp ata, Timestamp atd, Timestamp eta, Timestamp etd,
-			Long frompartySeqNo, Character okflag, String shippingId, Long topartySeqNo) {
+	public ShippingMaster(Long shippingSeqNo, Character doneFlag, Character inFlag, Character okflag, Timestamp ata,
+			Timestamp atd, Timestamp eta, Timestamp etd, Long frompartySeqNo, String shippingId, Long topartySeqNo) {
 		super();
 		this.shippingSeqNo = shippingSeqNo;
+		this.doneFlag = doneFlag;
+		this.inFlag = inFlag;
+		this.okflag = okflag;
 		this.ata = ata;
 		this.atd = atd;
 		this.eta = eta;
 		this.etd = etd;
 		this.frompartySeqNo = frompartySeqNo;
-		this.okflag = okflag;
 		this.shippingId = shippingId;
 		this.topartySeqNo = topartySeqNo;
 	}
 
+	
+	
 }

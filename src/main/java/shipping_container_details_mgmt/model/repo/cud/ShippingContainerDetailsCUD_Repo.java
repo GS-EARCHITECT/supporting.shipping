@@ -12,10 +12,14 @@ import shipping_container_details_mgmt.model.master.ShippingContainerDetailPK;
 public interface ShippingContainerDetailsCUD_Repo extends JpaRepository<ShippingContainerDetail, ShippingContainerDetailPK> 
 {
 
+	@Query(value = "update Shipping_Container_Details set okflag= 'Y' where (sc_SEQ_NO = id and consignment_SEQ_NO = :cid)", nativeQuery = true)
+	void updShippingConsignmentStatus(@Param("id") Long id, @Param("cid") Long cid);
+	
 	@Query(value = "delete from Shipping_Container_Details where sc_SEQ_NO in :ids", nativeQuery = true)
 	void delSelectShippingContainerDetailsBySchedules(@Param("ids") CopyOnWriteArrayList<Long> ids);
 
 	@Query(value = "delete from  Shipping_Container_Details where consignment_SEQ_NO in :cids", nativeQuery = true)
 	void delSelectShippingContainerDetailsForConsignments(@Param("cids") CopyOnWriteArrayList<Long> cids);
+
 	
 }

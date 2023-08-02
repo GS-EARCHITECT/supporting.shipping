@@ -27,7 +27,7 @@ public class ShippingContainerDetailsCUD_Service implements I_ShippingContainerD
 
 	@Autowired
 	private Executor asyncExecutor;
-
+	
 	@Override
 	public CompletableFuture<ShippingContainerDetail_DTO> newShippingContainerDetail(
 			ShippingContainerDetail_DTO shippingContainerDetail_DTO) {
@@ -49,21 +49,40 @@ public class ShippingContainerDetailsCUD_Service implements I_ShippingContainerD
 
 	@Override
 	public CompletableFuture<Void> updShippingContainerDetail(ShippingContainerDetail_DTO shippingContainerDetail_DTO) {
-		CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
-			ShippingContainerDetail_DTO jcmDTO = null;
+		CompletableFuture<Void> future = CompletableFuture.runAsync(() -> 
+		{
 			ShippingContainerDetailPK shippingContainerDetailPK = new ShippingContainerDetailPK();
 			shippingContainerDetailPK.setConsignmentSeqNo(shippingContainerDetail_DTO.getConsignmentSeqNo());
 			shippingContainerDetailPK.setScSeqNo(shippingContainerDetail_DTO.getScSeqNo());
 
 			if (shippingContainerDetailsCUDRepo.existsById(shippingContainerDetailPK)) 
 			{
-				shippingContainerDetailsCUDRepo.save(this.setShippingContainerDetail_DTO(shippingContainerDetail_DTO));
+			shippingContainerDetailsCUDRepo.save(this.setShippingContainerDetail_DTO(shippingContainerDetail_DTO));
 			}
 			return;
 		}, asyncExecutor);
 		return future;
 	}
 
+	@Override
+	public CompletableFuture<Void> updShippingConsignmentStatus(ShippingContainerDetail_DTO shippingContainerDetail_DTO)
+	{
+		CompletableFuture<Void> future = CompletableFuture.runAsync(() -> 
+		{
+			ShippingContainerDetailPK shippingContainerDetailPK = new ShippingContainerDetailPK();
+			shippingContainerDetailPK.setConsignmentSeqNo(shippingContainerDetail_DTO.getConsignmentSeqNo());
+			shippingContainerDetailPK.setScSeqNo(shippingContainerDetail_DTO.getScSeqNo());
+
+			if (shippingContainerDetailsCUDRepo.existsById(shippingContainerDetailPK)) 
+			{
+			shippingContainerDetailsCUDRepo.updShippingConsignmentStatus(shippingContainerDetailPK.getScSeqNo(), shippingContainerDetailPK.getConsignmentSeqNo());
+			}
+			return;
+		}, asyncExecutor);
+		return future;
+	}
+
+	
 	@Override
 	public CompletableFuture<Void> delSelectShippingContainerDetails(CopyOnWriteArrayList<ShippingContainerDetailPK> shippingContainerDetailPKs)
 	{
