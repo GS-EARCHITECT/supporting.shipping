@@ -46,6 +46,34 @@ public class ShippingMasterCUD_Controller {
 		return;
 	}
 
+	@PutMapping("/updShippingMasterOk/{scid}")
+	public void updShippingMasterOk(@PathVariable Long scid)
+	{
+		shippingMasterCUDService.updShippingMasterOk(scid);
+		return;
+	}
+
+	@PutMapping("/updShippingMasterOkStatus/{scid}/{st}")
+	public void updShippingMasterOkStatus(@PathVariable Long scid, @PathVariable Character st)
+	{
+		shippingMasterCUDService.updShippingMasterOkStatus(scid, st);
+		return;
+	}
+
+	@PutMapping("/updShippingMasterDone/{scid}")
+	public void updShippingMasterDone(@PathVariable Long scid)
+	{
+		shippingMasterCUDService.updShippingMasterDone(scid);
+		return;
+	}
+
+	@PutMapping("/updShippingMasterDoneStatus/{scid}/{st}")
+	public void updShippingMasterDone(@PathVariable Long scid, @PathVariable Character st)
+	{
+		shippingMasterCUDService.updShippingMasterDoneStatus(scid, st);
+		return;
+	}
+	
 	@DeleteMapping("/delSelectShippingMasters")
 	public void delSelectShippingMasters(@RequestBody CopyOnWriteArrayList<Long> pids) {
 		shippingMasterCUDService.delSelectShippingMasters(pids);

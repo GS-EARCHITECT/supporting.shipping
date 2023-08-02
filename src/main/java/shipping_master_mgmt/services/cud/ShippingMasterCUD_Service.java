@@ -166,6 +166,46 @@ public class ShippingMasterCUD_Service implements I_ShippingMasterCUD_Service {
 		return future;
 	}
 
+	@Override
+	public CompletableFuture<Void> updShippingMasterDone(Long id)
+	{
+		CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+			shippingMasterCUDRepo.updShippingMasterDone(id);
+			return;
+		}, asyncExecutor);
+		return future;
+	}
+
+	@Override
+	public CompletableFuture<Void> updShippingMasterDoneStatus(Long scid, Character st)
+	{
+		CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+			shippingMasterCUDRepo.updShippingMasterDoneStatus(scid, st);
+			return;
+		}, asyncExecutor);
+		return future;
+	}
+	
+	@Override
+	public CompletableFuture<Void> updShippingMasterOk(Long id)
+	{
+		CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+			shippingMasterCUDRepo.updShippingMasterOk(id);
+			return;
+		}, asyncExecutor);
+		return future;
+	}
+	
+	@Override
+	public CompletableFuture<Void> updShippingMasterOkStatus(Long scid, Character st)
+	{
+		CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+			shippingMasterCUDRepo.updShippingMasterOkStatus(scid, st);
+			return;
+		}, asyncExecutor);
+		return future;
+	}
+	
 	private synchronized ShippingMaster_DTO getShippingMaster_DTO(ShippingMaster shippingMaster2) 
 	{
 		ShippingMaster_DTO shippingMasterDTO = new ShippingMaster_DTO();

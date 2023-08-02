@@ -17,4 +17,8 @@ public interface I_ShippingMasterCUD_Service
 	public CompletableFuture<Void> delSelectShippingMastersDelivered();
 	public CompletableFuture<Void> delSelectWorksBetweenETimes(String frDtTm, String toDtTm);
 	public CompletableFuture<Void> delSelectWorksBetweenATimes(String frDtTm, String toDtTm);
+	public CompletableFuture<Void> updShippingMasterDone(Long id);
+	public CompletableFuture<Void> updShippingMasterDoneStatus(Long id, Character st);
+	public CompletableFuture<Void> updShippingMasterOk(Long id);
+	public CompletableFuture<Void> updShippingMasterOkStatus(Long id, Character st);
 }

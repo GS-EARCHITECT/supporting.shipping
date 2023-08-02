@@ -116,6 +116,46 @@ public class ShippingContainerDetailsCUD_Service implements I_ShippingContainerD
 	}
 
 	@Override
+	public CompletableFuture<Void> updShippingContainerDetailDone(Long scid, Long cid)
+	{
+		CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+			shippingContainerDetailsCUDRepo.updShippingContainerDetailDone(scid, cid);
+			return;
+		}, asyncExecutor);
+		return future;
+	}
+
+	@Override
+	public CompletableFuture<Void> updShippingContainerDetailDoneStatus(Long scid, Long cid, Character st)
+	{
+		CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+			shippingContainerDetailsCUDRepo.updShippingContainerDetailDoneStatus(scid, cid, st);
+			return;
+		}, asyncExecutor);
+		return future;
+	}
+	
+	@Override
+	public CompletableFuture<Void> updShippingContainerDetailOk(Long scid, Long cid)
+	{
+		CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+			shippingContainerDetailsCUDRepo.updShippingContainerDetailOk(scid, cid);
+			return;
+		}, asyncExecutor);
+		return future;
+	}
+	
+	@Override
+	public CompletableFuture<Void> updShippingContainerDetailOkStatus(Long scid, Long cid, Character st)
+	{
+		CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+			shippingContainerDetailsCUDRepo.updShippingContainerDetailOkStatus(scid, cid, st);
+			return;
+		}, asyncExecutor);
+		return future;
+	}
+	
+	@Override
 	public CompletableFuture<Void> delAllShippingContainerDetails() {
 		CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
 			shippingContainerDetailsCUDRepo.deleteAll();
@@ -135,7 +175,6 @@ public class ShippingContainerDetailsCUD_Service implements I_ShippingContainerD
 	private synchronized ShippingContainerDetail setShippingContainerDetail_DTO(ShippingContainerDetail_DTO shippingContainerDetailDTO) 
 	{
 		ShippingContainerDetail shippingContainerDetail = new ShippingContainerDetail();
-		ShippingContainerDetail_DTO jcmDTO = null;
 		ShippingContainerDetailPK shippingContainerDetailPK = new ShippingContainerDetailPK();
 		shippingContainerDetailPK.setConsignmentSeqNo(shippingContainerDetailDTO.getConsignmentSeqNo());
 		shippingContainerDetailPK.setScSeqNo(shippingContainerDetailDTO.getScSeqNo()); 

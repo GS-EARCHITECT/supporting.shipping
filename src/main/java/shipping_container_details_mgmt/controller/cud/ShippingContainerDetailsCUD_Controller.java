@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -45,7 +46,36 @@ public class ShippingContainerDetailsCUD_Controller {
 		shippingContainerDetailsCUDService.updShippingContainerDetail(shippingContainerDetail_DTO);
 		return;
 	}
+	
+	@PutMapping("/updShippingContainerDetailOk/{scid}/{cid}")
+	public void updShippingContainerDetailOk(@PathVariable Long scid, @PathVariable Long cid)
+	{
+		shippingContainerDetailsCUDService.updShippingContainerDetailOk(scid, cid);
+		return;
+	}
 
+	@PutMapping("/updShippingContainerDetailOkStatus/{scid}/{cid}/{st}")
+	public void updShippingContainerDetailOkStatus(@PathVariable Long scid, @PathVariable Long cid, @PathVariable Character st)
+	{
+		shippingContainerDetailsCUDService.updShippingContainerDetailOkStatus(scid, cid, st);
+		return;
+	}
+
+	@PutMapping("/updShippingContainerDetailDone/{scid}/{cid}")
+	public void updShippingContainerDetailDone(@PathVariable Long scid, @PathVariable Long cid)
+	{
+		shippingContainerDetailsCUDService.updShippingContainerDetailDone(scid, cid);
+		return;
+	}
+
+	@PutMapping("/updShippingContainerDetailDoneStatus/{scid}/{cid}/{st}")
+	public void updShippingContainerDetailDone(@PathVariable Long scid, @PathVariable Long cid, @PathVariable Character st)
+	{
+		shippingContainerDetailsCUDService.updShippingContainerDetailDoneStatus(scid, cid, st);
+		return;
+	}
+
+	
 	@DeleteMapping("/delSelectShippingContainerDetails")
 	public void delSelectShippingContainerDetails(@RequestBody CopyOnWriteArrayList<ShippingContainerDetailPK> shippingContainerDetailPKs)
 	{

@@ -14,5 +14,8 @@ public interface I_ShippingContainerDetailsCUD_Service
 	public CompletableFuture<Void> delSelectShippingContainerDetails(CopyOnWriteArrayList<ShippingContainerDetailPK> shippingContainerDetailPKs);
 	public CompletableFuture<Void> delSelectShippingContainerDetailsBySchedules(CopyOnWriteArrayList<Long> ids);
 	public CompletableFuture<Void> delSelectShippingContainerDetailsForConsignments(CopyOnWriteArrayList<Long> cids);
-
+	public CompletableFuture<Void> updShippingContainerDetailDone(Long scid, Long cid);
+	public CompletableFuture<Void> updShippingContainerDetailDoneStatus(Long scid, Long cid, Character st);
+	public CompletableFuture<Void> updShippingContainerDetailOk(Long scid, Long cid);
+	public CompletableFuture<Void> updShippingContainerDetailOkStatus(Long scid, Long cid, Character st);
 }

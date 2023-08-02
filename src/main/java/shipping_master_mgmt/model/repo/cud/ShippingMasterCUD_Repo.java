@@ -3,6 +3,7 @@ package shipping_master_mgmt.model.repo.cud;
 import java.sql.Timestamp;
 import java.util.concurrent.CopyOnWriteArrayList;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -35,5 +36,21 @@ public interface ShippingMasterCUD_Repo extends JpaRepository<ShippingMaster, Lo
 		
 	@Query(value = "SELECT * FROM Shipping_MASTER where (ATD <= :frDtTm and ATA >= :toDtTm) ORDER BY shipping_sEQ_NO",nativeQuery = true)
 	void delSelectWorksBetweenATimes(@Param("frDtTm") Timestamp frDtTm, @Param("toDtTm") Timestamp toDtTm);
+	
+	@Modifying
+	@Query(value = "update Shipping_Master set doneflag = 'Y' where shipping_seq_no = :id", nativeQuery = true)
+	void updShippingMasterDone(@Param("scid") Long id);
+	
+	@Modifying
+	@Query(value = "update Shipping_Master set doneflag = :st where shipping_seq_no = :id", nativeQuery = true)
+	void updShippingMasterDoneStatus(@Param("id") Long id, @Param("st") Character st);
+		
+	@Modifying
+	@Query(value = "update Shipping_Master set okflag = 'Y' where shipping_seq_no = :id", nativeQuery = true)
+	void updShippingMasterOk(@Param("id") Long id);
+	
+	@Modifying
+	@Query(value = "update Shipping_Master set okflag = :st where shipping_seq_no = :id", nativeQuery = true)
+	void updShippingMasterOkStatus(@Param("scid") Long scid, @Param("st") Character st);
 	
 }
