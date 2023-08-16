@@ -29,11 +29,11 @@ public class ShippingContainerDetailsRead_Service implements I_ShippingContainer
 	private Executor asyncExecutor;
 
 	@Override
-	public CompletableFuture<CopyOnWriteArrayList<ShippingContainerDetail_DTO>> getAllShippingContainerDetails() {
+	public CompletableFuture<CopyOnWriteArrayList<ShippingContainerDetail_DTO>> getAllShippingContainerDetails() 
+	{
 		CompletableFuture<CopyOnWriteArrayList<ShippingContainerDetail_DTO>> future = CompletableFuture
 				.supplyAsync(() -> {
-					CopyOnWriteArrayList<ShippingContainerDetail> shippingList = (CopyOnWriteArrayList<ShippingContainerDetail>) shippingContainerDetailsReadRepo
-							.findAll();
+					CopyOnWriteArrayList<ShippingContainerDetail> shippingList = (CopyOnWriteArrayList<ShippingContainerDetail>) shippingContainerDetailsReadRepo.findAll();
 					CopyOnWriteArrayList<ShippingContainerDetail_DTO> jcmDTOs = new CopyOnWriteArrayList<ShippingContainerDetail_DTO>();
 					jcmDTOs = shippingList != null ? this.getShippingContainerDetail_DTOs(shippingList) : null;
 					return jcmDTOs;
